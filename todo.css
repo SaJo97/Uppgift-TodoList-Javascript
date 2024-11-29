@@ -1,0 +1,181 @@
+/* Reset margin, padding, and box-sizing for all elements and pseudo-elements */
+*, ::before, ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
+}
+
+/* Set default font and background color for the body */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #001440; 
+}
+
+/* Main wrapper to center content with flexbox */
+.wrapper {
+  display: flex;
+  align-items: center; 
+  flex-direction: column; 
+}
+
+/* Container for content layout */
+.container {
+  width: 70%; /* Restricts width to 70% of parent */
+  height: 100%; /* 100% of parent height */
+}
+
+/* Header styles for the main title section */
+.header {
+  text-align: center; 
+  color: white; 
+  padding: 1rem 2rem 2rem 2rem; 
+  background-color: hsl(221, 53%, 23%); 
+}
+
+/* Clear floats in header */
+.header:after {
+  content: ''; /* Necessary to clear floats */
+  display: table; /* Acts as a block to contain floated children */
+  clear: both; /* Clear any floats */
+}
+
+/* Title styling within header */
+.title {
+  padding-bottom: .5rem; 
+}
+
+/* Todo list styles */
+.todo-list {
+  width: 100%; /* Full width of container */
+}
+
+/* Input field for new todo items */
+.input {
+  font-size: 1rem; 
+  padding: 0.625rem; 
+  background-color: #fff; 
+  color: black; 
+  width: 75%; /* 75% of parent width */
+  float: left; /* Float left to align with other elements */
+  border-radius: .5rem 0 0 .5rem; 
+  border: none; 
+}
+
+/* Button to add new todos */
+.add-btn {
+  font-size: 1rem; 
+  padding: 0.625rem; 
+  width: 25%; /* 25% of parent width */
+  border-radius: 0 .5rem .5rem 0;
+  text-align: center; 
+  background-color: #001440; 
+  color: white; 
+  float: left; /* Float left to align with other elements */
+  border: none; 
+  cursor: pointer; 
+}
+
+/* Button hover effect */
+.btn:hover {
+  background-color: #02075d; 
+}
+
+/* Style for list items */
+li {
+  list-style: none; /* Remove bullet points */
+  position: relative; /* Position relative for absolutely positioned children */
+  cursor: pointer; 
+  background-color: hsl(201, 31%, 37%); 
+  color: #fff; 
+  padding: .75rem .5rem .75rem 2.5rem; 
+  display: flex; 
+  align-items: center; 
+}
+
+/* Odd list item styles */
+li:nth-child(odd) {
+  background-color: hsl(201, 31%, 30%); /* Slightly different background color for odd items */
+}
+
+/* Hover effect for list items */
+li:hover {
+  background-color: hsl(201, 31%, 20%); /* Darker background on hover */
+}
+
+/* Styles for checked list items */
+li.checked {
+  background-color: #02075d; /* Dark blue background for checked items */
+  color: rgb(26, 199, 29); /* Green text color for checked items */
+  text-decoration: line-through; /* Strike-through text for completed items */
+}
+
+/* Checkmark styling for checked items */
+li.checked::before {
+  content: ''; /* Empty content for pseudo-element */
+  position: absolute; 
+  border-color: rgb(26, 199, 29); /* Green color for the checkmark */
+  border-style: solid; /* Solid border for checkmark */
+  border-width: 0 .125rem .125rem 0; /* Create a diagonal checkmark */
+  top: .85rem; /* Position checkmark */
+  left: 1rem; /* Position checkmark */
+  transform: rotate(45deg); /* Rotate to create checkmark shape */
+  height: 1rem; /* Height of checkmark */
+  width: .5rem; /* Width of checkmark */
+}
+
+/* Close button styles */
+.close-btn {
+  background-color: transparent;
+  border: none; 
+  position: absolute; 
+  right: 0; /* Align to the right */
+  top: 0; /* Align to the top */
+  padding: 1rem; 
+  cursor: pointer; 
+  color: #fff;
+}
+
+/* Close button hover effect */
+.close-btn:hover {
+  background-color: #001440; /* Change background color on hover */
+  color: firebrick; /* Change text color on hover */
+}
+
+/* Popup button styles */
+.popup-btn {
+  cursor: pointer; 
+  background-color: red; 
+  border: 1px solid black; 
+  padding: .1rem .3rem; 
+  color: #fff; 
+}
+
+/* Pop-up container styles */
+.pop-up-container {
+  position: fixed; /* Fixed position across the viewport */
+  z-index: 1; /* Ensure it appears above other content */
+  left: 0; /* Align to left edge */
+  top: 0; /* Align to top edge */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scrolling if necessary */
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+}
+
+/* Pop-up styling */
+.pop-up {
+  display: flex; 
+  gap: 1rem; 
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  background-color: #fefefe;
+  margin: 15% auto; /* Center pop-up with margin on top/bottom */
+  padding: .5em 1rem 1rem 1rem;
+  width: 50%; /* 50% width of the pop-up container */
+  border: 1px solid red;
+}
+
+/* Class to control visibility of pop-up */
+.popup-visible {
+  display: initial; /* Show the pop-up */
+}

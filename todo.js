@@ -226,8 +226,16 @@ async function putTodo(id, isCompleted, title) {
     completed: !isCompleted, // Toggle the completed status
     title
   };
-
-  // Optimistically update the todoList for immediate UI feedback. Here, the code is updating an array called todoList. The .map() method creates a new array by applying the provided function to each element in the original array (todoList). Inside the map's callback function: *todo represents the current element (a todo item) being processed. *The condition todo._id === id checks if the _id property of the current todo matches a variable called id. *If there's a match, it replaces that todo with updatedApiTodo; otherwise, it keeps the original todo. *Finally, todoList is reassigned to this new array.
+/*
+  Optimistically update the todoList for immediate UI feedback. 
+  Here, the code is updating an array called todoList. 
+  The .map() method creates a new array by applying the provided function to each element in the original array (todoList). 
+  Inside the map's callback function: 
+  *todo represents the current element (a todo item) being processed. 
+  *The condition todo._id === id checks if the _id property of the current todo matches a variable called id. 
+  *If there's a match, it replaces that todo with updatedApiTodo; otherwise, it keeps the original todo. 
+  *Finally, todoList is reassigned to this new array.
+*/
   todoList = todoList.map((todo) => (todo._id === id ? updateTodo : todo));
 
   renderTodoList();
@@ -256,8 +264,14 @@ async function putTodo(id, isCompleted, title) {
     renderTodoList();
   } catch (error) {
     console.log("Error:", error);
-
-    // If the update fails, revert the optimistic update in todoList. If the _id of the current todo matches the id, it creates a new object with all the properties of the existing todo using the spread operator (...todo), but with the completed property updated to the value of isCompleted. If the _id does not match, it simply returns the todo object unchanged. Return a new array: After processing all the items, map returns a new array with the updated todos. Notably, this does not mutate the original todoList.
+/*
+    If the update fails, revert the optimistic update in todoList. 
+    If the _id of the current todo matches the id, it creates a new object with all the properties of the existing todo using the spread operator (...todo), 
+    but with the completed property updated to the value of isCompleted. 
+    If the _id does not match, it simply returns the todo object unchanged. 
+    Return a new array: After processing all the items, map returns a new array with the updated todos. 
+    Notably, this does not mutate the original todoList.
+*/
     todoList = todoList.map((todo) => (todo._id === id ? {...todo, completed: isCompleted } : todo));
     
     renderTodoList();
